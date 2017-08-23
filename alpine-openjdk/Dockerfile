@@ -1,14 +1,12 @@
 FROM alpine:latest
 
-# Install CURL
+# add repositories
 RUN echo -e "https://mirror.tuna.tsinghua.edu.cn/alpine/v3.6/main\n\
 https://mirror.tuna.tsinghua.edu.cn/alpine/v3.6/community" > /etc/apk/repositories
 
+#install curl bash openjdk8
 RUN apk --update add curl bash openjdk8 && \
       rm -rf /var/cache/apk/*
-
-#install java
-ADD jdk /usr/java/jdk
 
 # Set environment
 ENV JAVA_HOME /usr/lib/jvm/default-jvm
