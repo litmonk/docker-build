@@ -1,11 +1,12 @@
-FROM openjdk:8-jre-alpine
+FROM alpine
 
 # add repositories
 RUN echo -e "https://mirror.tuna.tsinghua.edu.cn/alpine/latest-stable/main\n\
 https://mirror.tuna.tsinghua.edu.cn/alpine/latest-stable/community" > /etc/apk/repositories
 
 #install curl bash openjdk8 iproute2（ss） drill（dns）
-RUN apk --update add bash curl iproute2 drill && \
+RUN apk --update add openjdk8-jre && \
+      apk add bash curl iproute2 drill && \
       rm -rf /var/cache/apk/*
 
 # Set environment
